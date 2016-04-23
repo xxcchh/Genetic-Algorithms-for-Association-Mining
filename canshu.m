@@ -1,0 +1,12 @@
+w1 = 0.5; %适应度函数supp系数
+w2 = 0.5; %适应度函数conf系数 
+minsupp = 0.01; %最小支持度
+minconf = 0.6; %最小置信度
+Max = 30; %进化代数
+number = 20;%群体规模
+maxlen = size(matrix,2); %将组合最大长度作为染色体长度
+clength = maxlen;%染色体长度
+Pc = 0.8;%交叉概率
+Ps = 0.1;%变异概率
+elite = 1;%是否保留精英
+n_cross = 1;%交叉位点个数
