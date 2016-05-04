@@ -1,12 +1,12 @@
-function [value, confi] = apriori_fit( member, group, matrix, supplist)
+function [value, confi, suppi] = apriori_fit( member, group, matrix, supplist)
 canshu;
-[number, ~] = size(group);
-fitness = zeros(number,1);
+[n, ~] = size(group);
+fitness = zeros(n,1);
 lenm = sum(member~=0);
-choiceraw = repmat(member,number,1).*group;
+choiceraw = repmat(member,n,1).*group;
 supp = supplist(ismember(matrix,member,'rows'));
-conf = zeros(number,1);
-for i = 1:number
+conf = zeros(n,1);
+for i = 1:n
     temp = choiceraw(i, :);
     temp = sort(temp(temp~=0));
     len = length(temp);
@@ -25,6 +25,7 @@ for i = 1:number
 end
 value = fitness;
 confi = conf;
+suppi = ones(n,1) * supp;
 
 
 

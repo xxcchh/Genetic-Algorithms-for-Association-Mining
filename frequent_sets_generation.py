@@ -5,6 +5,7 @@ Created on Sat Mar 05 17:03:25 2016
 @author: Chen
 """
 import numpy as np
+import pandas as pd
 from itertools import combinations
 
 def union_dict(*objs):
@@ -138,6 +139,21 @@ def gen_frequent(data, s, maxlen):
 
     return H
 
-    
+def output(frequent_item, path):
+    frequent_m = {}
+    for i in frequent_item.keys():
+        frequent_m[i] = np.zeros((len(frequent_item[i].keys()), i + 1))
+        for idx, j in enumerate(frequent_item[i].keys()):
+            frequent_m[i][idx, :i] = np.array(j)
+            frequent_m[i][idx, -1] = frequent_item[i][j]
+    num = 0 
+    for i in frequent_item.keys():
+        if frequent_item[i] != {}:
+            num += 1
+    for i in range(num):
+        ma = frequent_m[i+1]
+        df = pd.DataFrame(ma)        
+        df.to_csv(path + 'matrix%s.csv' %str(i+1)) 
+    return num
     
     
