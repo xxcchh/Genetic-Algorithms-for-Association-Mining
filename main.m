@@ -1,4 +1,8 @@
-preprocessing; %得到需要计算的数据
+if (exist('data//test.mat', 'file'))
+    load data//test.mat %如果已经有测试集则直接拿来算
+else 
+    preprocessing; %否则根据频繁集得到用来计算的数据
+end 
 canshu; %参数设置
 gen = 1;%初始代数
 group = create(number, clength); %产生初始代染色体

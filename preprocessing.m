@@ -18,4 +18,7 @@ end
 supplist = supplist/row;
 clear data filename i num row sets supp
 delete data//info.txt data//matrix* 
+save data//t
+
+
 
